@@ -8,6 +8,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,20 +27,20 @@ public class HomeController implements Initializable {
 
         TreeItem<String> rootItemHome = new TreeItem<>("Home", new ImageView(new Image(getClass().getResourceAsStream("home.png"))));
         TreeItem<String> rootItemMembers = new TreeItem<>("Members", new ImageView(new Image(getClass().getResourceAsStream("person.png"))));
-        TreeItem<String> rootItemStaff = new TreeItem<>("Staff");
-        TreeItem<String> rootItemChat = new TreeItem<>("Chat");
-        TreeItem<String> rootItemSchedule = new TreeItem<>("Schedule");
-        TreeItem<String> rootItemPayments = new TreeItem<>("Payments");
-        TreeItem<String> rootItemPrice = new TreeItem<>("Price");
+        TreeItem<String> rootItemStaff = new TreeItem<>("Staff", new ImageView(new Image(getClass().getResourceAsStream("person.png"))));
+        TreeItem<String> rootItemChat = new TreeItem<>("Chat", new ImageView(new Image(getClass().getResourceAsStream("person.png"))));
+        TreeItem<String> rootItemSchedule = new TreeItem<>("Schedule", new ImageView(new Image(getClass().getResourceAsStream("person.png"))));
+        TreeItem<String> rootItemPayments = new TreeItem<>("Payments", new ImageView(new Image(getClass().getResourceAsStream("person.png"))));
+        TreeItem<String> rootItemPrice = new TreeItem<>("Price", new ImageView(new Image(getClass().getResourceAsStream("pay.png"))));
 
-        TreeItem<String> itemMembersAll = new TreeItem<>("All members");
-        TreeItem<String> itemMembersAdd = new TreeItem<>("Add a member");
-        TreeItem<String> itemMembersProfile = new TreeItem<>("Member's profile");
+        TreeItem<String> itemMembersAll = new TreeItem<>("All members", new ImageView(new Image(getClass().getResourceAsStream("person.png"))));
+        TreeItem<String> itemMembersAdd = new TreeItem<>("Add a member", new ImageView(new Image(getClass().getResourceAsStream("person_add.png"))));
+        TreeItem<String> itemMembersProfile = new TreeItem<>("Member's profile", new ImageView(new Image(getClass().getResourceAsStream("person.png"))));
 
-        TreeItem<String> itemScheduleClass = new TreeItem<>("Classes");
-        TreeItem<String> itemSchedulePersonal = new TreeItem<>("Personal classes");
+        TreeItem<String> itemScheduleClass = new TreeItem<>("Classes", new ImageView(new Image(getClass().getResourceAsStream("person.png"))));
+        TreeItem<String> itemSchedulePersonal = new TreeItem<>("Personal classes", new ImageView(new Image(getClass().getResourceAsStream("person.png"))));
 
-        menuRoot.getChildren().addAll(rootItemHome,rootItemMembers,rootItemStaff, rootItemChat,  rootItemSchedule, rootItemPayments,  rootItemPrice);
+        menuRoot.getChildren().addAll(rootItemHome, rootItemMembers, rootItemStaff, rootItemChat, rootItemSchedule, rootItemPayments, rootItemPrice);
         rootItemMembers.getChildren().addAll(itemMembersAll, itemMembersAdd, itemMembersProfile);
         rootItemSchedule.getChildren().addAll(itemScheduleClass, itemSchedulePersonal);
 
@@ -49,11 +50,13 @@ public class HomeController implements Initializable {
 
     public void treeMenu() {
         TreeItem<String> item = (TreeItem<String>) menu.getSelectionModel().getSelectedItem();
-        if (item != null){
+        if (item != null) {
             System.out.printf(item.getValue());
         }
     }
 
     public void exit(ActionEvent event) {
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close();
     }
 }

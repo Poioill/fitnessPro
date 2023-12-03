@@ -1,4 +1,10 @@
 #menu .tree-cell {
-        -fx-background-color: blue ;
+        -fx-background-color: #1172B9 ;
         -fx-text-fill: #ffffff ;
+}
+.exitBtn{
+        -fx-background-color: transparent;
+        -fx-border: none;
+        -fx-text-fill: white;
+        -fx-cursor: pointer;
 }
