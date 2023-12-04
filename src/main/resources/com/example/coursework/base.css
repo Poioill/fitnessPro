@@ -1,10 +1,23 @@
 #menu .tree-cell {
-        -fx-background-color: #1172B9 ;
-        -fx-text-fill: #ffffff ;
+        -fx-background-color: #1172B9;
+        -fx-text-fill: #ffffff;
+        -fx-font-size: 18px;
+        -fx-font-weight: 500;
+}
+#menu .tree-cell:hover{
+        -fx-opacity: 0.5;
+        -fx-transition-duration: 0.4;
+        -fx-cursor: pointer;
+}
+#menu{
+        -fx-font-family: Montserrat;
+        -fx-border: none;
+        -fx-background-color: #1172B9;
 }
 .exitBtn{
         -fx-background-color: transparent;
         -fx-border: none;
         -fx-text-fill: white;
         -fx-cursor: pointer;
+        -fx-font-size: 18px;
 }
