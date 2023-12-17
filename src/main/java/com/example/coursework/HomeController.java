@@ -67,6 +67,17 @@ public class HomeController implements Initializable {
             stageNew.setScene(scene);
             stageNew.show();
         }
+        if (item.getValue() == "Home") {
+            Stage stage = (Stage) item.getGraphic().getScene().getWindow();
+            stage.close();
+            Stage stageNew = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainPage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1100, 630);
+            String css = this.getClass().getResource("base.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stageNew.setScene(scene);
+            stageNew.show();
+        }
     }
 
     public void exit(ActionEvent event) {
