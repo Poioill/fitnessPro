@@ -61,7 +61,7 @@ public class HomeController implements Initializable {
             stage.close();
             Stage stageNew = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("schedule.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1100, 630);
+            Scene scene = new Scene(fxmlLoader.load(), 1275, 660);
             String css = this.getClass().getResource("base.css").toExternalForm();
             scene.getStylesheets().add(css);
             stageNew.setScene(scene);
@@ -72,7 +72,7 @@ public class HomeController implements Initializable {
             stage.close();
             Stage stageNew = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainPage.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1100, 630);
+            Scene scene = new Scene(fxmlLoader.load(), 1275, 660);
             String css = this.getClass().getResource("base.css").toExternalForm();
             scene.getStylesheets().add(css);
             stageNew.setScene(scene);
