@@ -2,15 +2,17 @@ package com.example.coursework;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -49,10 +51,21 @@ public class HomeController implements Initializable {
         menu.setRoot(menuRoot);
     }
 
-    public void treeMenu() {
+    public void treeMenu() throws IOException {
         TreeItem<String> item = (TreeItem<String>) menu.getSelectionModel().getSelectedItem();
         if (item != null) {
             System.out.printf(item.getValue());
+        }
+        if (item.getValue() == "Schedule") {
+            Stage stage = (Stage) item.getGraphic().getScene().getWindow();
+            stage.close();
+            Stage stageNew = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("schedule.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1100, 630);
+            String css = this.getClass().getResource("base.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stageNew.setScene(scene);
+            stageNew.show();
         }
     }
 
