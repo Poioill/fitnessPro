@@ -9,6 +9,8 @@ module com.example.coursework {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
+    requires java.sql;
+    requires org.postgresql.jdbc;
 
     opens com.example.coursework to javafx.fxml;
     exports com.example.coursework;

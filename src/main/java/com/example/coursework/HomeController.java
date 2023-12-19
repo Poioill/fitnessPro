@@ -56,11 +56,11 @@ public class HomeController implements Initializable {
         if (item != null) {
             System.out.printf(item.getValue());
         }
-        if (item.getValue() == "Schedule") {
+        if (item.getValue() == "Classes") {
             Stage stage = (Stage) item.getGraphic().getScene().getWindow();
             stage.close();
             Stage stageNew = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("schedule.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("classes.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1275, 660);
             String css = this.getClass().getResource("base.css").toExternalForm();
             scene.getStylesheets().add(css);
@@ -72,6 +72,17 @@ public class HomeController implements Initializable {
             stage.close();
             Stage stageNew = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mainPage.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1275, 660);
+            String css = this.getClass().getResource("base.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stageNew.setScene(scene);
+            stageNew.show();
+        }
+        if (item.getValue() == "All members") {
+            Stage stage = (Stage) item.getGraphic().getScene().getWindow();
+            stage.close();
+            Stage stageNew = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("allMembers.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1275, 660);
             String css = this.getClass().getResource("base.css").toExternalForm();
             scene.getStylesheets().add(css);
