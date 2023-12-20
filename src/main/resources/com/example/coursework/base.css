@@ -34,10 +34,12 @@
 .table-row-cell:filled:selected:focused {
         -fx-background-color: #4e44e1;
 }
+.table-row-cell:empty:selected:focused, .table-row-cell:empty:hover  {
+        -fx-background-color: transparent;
+}
 .table-view .column-header{
         -fx-background-color: #1172B9;
         -fx-text-background-color: white;
-        -fx-margin: 0 auto;
         -fx-font-size: 16px;
         -fx-align-items: center;
 }
