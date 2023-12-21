@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="660.0" prefWidth="12110.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.coursework.PersonalClassesController">
+    <children>
+        <VBox>
+            <fx:include source="base.fxml" />
+        </VBox>
+        <Text layoutX="289.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-family: Montserrat; -fx-font-weight: 400;" text="Trainers" />
+        <TableView fx:id="PersonalTable" layoutX="260.0" layoutY="81.0"  prefHeight="544.0" prefWidth="1163.0">
+            <columns>
+                <TableColumn fx:id="id_trainer" prefWidth="200.0" />
+                <TableColumn fx:id="name" prefWidth="200.0" />
+                <TableColumn fx:id="number" prefWidth="200.0" />
+                <TableColumn fx:id="job" prefWidth="200.0" />
+                <TableColumn fx:id="id_schedule" prefWidth="200.0" />
+            </columns>
+        </TableView>
+
+    </children>
+</AnchorPane>

@@ -11,7 +11,7 @@ import java.sql.Connection;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("classes.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("personalClasses.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1275, 660);
 
         String css = this.getClass().getResource("base.css").toExternalForm();

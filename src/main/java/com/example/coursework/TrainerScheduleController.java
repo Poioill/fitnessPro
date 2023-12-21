@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableCell;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,57 +18,58 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ScheduleController implements Initializable {
+public class TrainerScheduleController implements Initializable {
 
     @FXML
-    private TableView<ClassesSchedule> ClassesScheduleTable;
+    public TableView<TrainerSchedule> trainerTable;
 
     @FXML
-    private TableColumn<ClassesSchedule, String> time;
+    private TableColumn<TrainerSchedule, String> time;
 
     @FXML
-    private TableColumn<ClassesSchedule, String> Monday;
+    private Label trainerName;
 
     @FXML
-    private TableColumn<ClassesSchedule, String> Tuesday;
+    private TableColumn<TrainerSchedule, String> Monday;
 
     @FXML
-    private TableColumn<ClassesSchedule, String> Wednesday;
+    private TableColumn<TrainerSchedule, String> Tuesday;
 
     @FXML
-    private TableColumn<ClassesSchedule, String> Thursday;
+    private TableColumn<TrainerSchedule, String> Wednesday;
 
     @FXML
-    private TableColumn<ClassesSchedule, String> Friday;
+    private TableColumn<TrainerSchedule, String> Thursday;
 
     @FXML
-    private TableColumn<ClassesSchedule, String> Saturday;
+    private TableColumn<TrainerSchedule, String> Friday;
 
     @FXML
-    private TableColumn<ClassesSchedule, String> Sunday;
+    private TableColumn<TrainerSchedule, String> Saturday;
 
+    @FXML
+    private TableColumn<TrainerSchedule, String> Sunday;
 
     String query = null;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    ClassesSchedule classesSchedule = null;
+    TrainerSchedule trainerSchedule = null;
 
-    ObservableList<ClassesSchedule> ClassesScheduleList = FXCollections.observableArrayList();
-
+    ObservableList<TrainerSchedule> trainerScheduleList = FXCollections.observableArrayList();
 
     @FXML
     void refreshTable() {
         try {
-            ClassesScheduleList.clear();
+            trainerScheduleList.clear();
 
-            query = "SELECT * FROM public.classes";
+            query = "SELECT * FROM public.trainer_schedule";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                ClassesScheduleList.add(new ClassesSchedule(
-                        resultSet.getString("time"),
+                trainerScheduleList.add(new TrainerSchedule(
+                        resultSet.getString("s_time"),
                         resultSet.getString("Monday"),
                         resultSet.getString("Tuesday"),
                         resultSet.getString("Wednesday"),
@@ -76,19 +77,30 @@ public class ScheduleController implements Initializable {
                         resultSet.getString("Friday"),
                         resultSet.getString("Saturday"),
                         resultSet.getString("Sunday")
+
                 ));
-                ClassesScheduleTable.setItems(ClassesScheduleList);
+                trainerTable.setItems(trainerScheduleList);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ScheduleController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadDate();
+    }
+
+
+    public void initData(String name) {
+        trainerName.setText(name);
+        System.out.println(trainerName);
     }
 
     public void loadDate() {
         connection = DataBaseHandler.getConnect();
         refreshTable();
 
-        time.setCellValueFactory(new PropertyValueFactory<>("time"));
+        time.setCellValueFactory(new PropertyValueFactory<>("s_time"));
         Monday.setCellValueFactory(new PropertyValueFactory<>("monday"));
         Tuesday.setCellValueFactory(new PropertyValueFactory<>("tuesday"));
         Wednesday.setCellValueFactory(new PropertyValueFactory<>("wednesday"));
@@ -99,8 +111,4 @@ public class ScheduleController implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadDate();
-    }
 }
