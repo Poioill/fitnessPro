@@ -96,13 +96,13 @@ public class PersonalClassesController implements Initializable {
                 PersonalClasses selectedPerson = PersonalTable.getSelectionModel().getSelectedItem();
 
                 if (selectedPerson != null) {
-                    openDetailsWindow(name, id_trainer);
+                    openDetailsWindow();
                 }
             }
         });
     }
 
-    private void openDetailsWindow(TableColumn<PersonalClasses, String> name, TableColumn<PersonalClasses, String> id_trainer) {
+    private void openDetailsWindow() {
         try {
             Stage stageNew = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("trainerSchedule.fxml"));

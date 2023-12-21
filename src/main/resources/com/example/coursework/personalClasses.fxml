@@ -21,6 +21,5 @@
                 <TableColumn fx:id="id_schedule" prefWidth="200.0" />
             </columns>
         </TableView>
-
     </children>
 </AnchorPane>
